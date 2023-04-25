@@ -18,6 +18,9 @@ function computerPlay(){
 const playRound = function(playerSelection, computerSelection){
     computerSelection = computerPlay();
     playerSelection = prompt("Rock, Paper, Scissors, shoot!");
+    if(playerSelection === null){
+        confirm("You hit cancel, are you sure you want to exit the game?")? console.log("abandonaste el juego!") : playRound();
+    }
     switch(playerSelection.toLowerCase() + computerSelection){
         case 'scissorspaper':
         case 'paperrock':
@@ -28,11 +31,11 @@ const playRound = function(playerSelection, computerSelection){
         case 'rockpaper':
             return roundResult = `YOU LOSE! ${computerSelection} beats your choice: ${playerSelection}`;
         case 'scissorsscissors':
-        case 'paperpaper':
+        case 'paperpaper': 
         case 'rockrock':
             return roundResult = `IT'S A DRAW! ${playerSelection} = Computer ${computerSelection}`;
         default:
-            return roundResult = alert("Your choice is invalid!, the only possible choices are: Rock, Paper or Scissors")
+            return roundResult = alert("Your choice is invalid!, the only possible choices are: Rock, Paper or Scissors");
     };
 };
 
@@ -50,13 +53,14 @@ function game(){
             score.computer++;
         }
     }
+    console.log(score)
     if(score.computer > score.player){
         alert("YOU LOSE!, better luck next time!")
-    } else if (score.computer > score.player){
+    } else if (score.player > score.computer){
         alert("CONGRATULATIONS! YOU ARE THE WINNER!!!")
-    } else if (score.computer = score.player){
+    } else if (score.computer == score.player){
         alert("IT'S A DRAW!")
     }
-    console.log(score)
 }
 console.log(game())
+
