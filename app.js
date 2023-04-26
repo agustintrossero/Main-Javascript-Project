@@ -1,6 +1,4 @@
 
-
-
 function computerPlay(){
     const randomNumber = Math.floor(Math.random() * 3) + 1;
     if (randomNumber === 1){
@@ -16,10 +14,10 @@ function computerPlay(){
 };
 
 const playRound = function(playerSelection, computerSelection){
+    playerSelection = prompt(`Rock, Paper, Scissors, shoot!`);
     computerSelection = computerPlay();
-    playerSelection = prompt("Rock, Paper, Scissors, shoot!");
     if(playerSelection === null){
-        confirm("You hit cancel, are you sure you want to exit the game?")? console.log("abandonaste el juego!") : playRound();
+        confirm("You hit cancel, are you sure you want to exit the game?")? startRestart() : playRound();
     }
     switch(playerSelection.toLowerCase() + computerSelection){
         case 'scissorspaper':
@@ -33,34 +31,46 @@ const playRound = function(playerSelection, computerSelection){
         case 'scissorsscissors':
         case 'paperpaper': 
         case 'rockrock':
-            return roundResult = `IT'S A DRAW! ${playerSelection} = Computer ${computerSelection}`;
+            return roundResult = `IT'S A DRAW!! ${playerSelection} = Computer ${computerSelection}`;
         default:
-            return roundResult = alert("Your choice is invalid!, the only possible choices are: Rock, Paper or Scissors");
+            return roundResult = alert("Your choice is invalid!, the only possible choices are: Rock, Paper or Scissors"), playRound();
     };
 };
+
+function startRestart() {
+    confirm("Welcome! You are about to start Rock, Paper, Scissors Game");
+    return game();
+}
+startRestart()
 
 function game(){
     score = {
         computer: 0,
         player: 0
     };
+    
+    
     for(i=0; i<5; i++){
         const roundResult = playRound(i);
         console.log(roundResult);
+        alert(roundResult)
         if(roundResult.includes("WIN")){
             score.player++;
         } else if (roundResult.includes("LOSE")){
             score.computer++;
         }
     }
-    console.log(score)
+    let = finalResult = ` Final Score: 
+    PLAYER: ${score.player} 
+    COMPUTER: ${score.computer} `
+
     if(score.computer > score.player){
-        alert("YOU LOSE!, better luck next time!")
+        alert(`YOU LOSE!, better luck next time! ${finalResult}`)
     } else if (score.player > score.computer){
-        alert("CONGRATULATIONS! YOU ARE THE WINNER!!!")
+        alert(`CONGRATULATIONS! YOU ARE THE WINNER!!!${finalResult}`)
     } else if (score.computer == score.player){
-        alert("IT'S A DRAW!")
+        alert(`IT'S A DRAW! ${finalResult}`)
     }
+    startRestart()
 }
-console.log(game())
 
