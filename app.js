@@ -23,15 +23,15 @@ const playRound = function(playerSelection, computerSelection){
         case 'scissorspaper':
         case 'paperrock':
         case 'rockscissors':
-            return roundResult = `YOU WIN! ${playerSelection} beats ${computerSelection}`;
+            return roundResult = `YOU WIN! ${playerSelection} beats ${computerSelection}\n`;
         case 'paperscissors':
         case 'scissorsrock':
         case 'rockpaper':
-            return roundResult = `YOU LOSE! ${computerSelection} beats ${playerSelection}`;
+            return roundResult = `YOU LOSE! ${computerSelection} beats ${playerSelection}\n`;
         case 'scissorsscissors':
         case 'paperpaper': 
         case 'rockrock':
-            return roundResult = `IT'S A DRAW!! ${playerSelection} = ${computerSelection}`;
+            return roundResult = `IT'S A DRAW!! ${playerSelection} = ${computerSelection}\n`;
         default:
             return roundResult = alert("Your choice is invalid!, the only possible choices are: Rock, Paper or Scissors"), playRound();
     };
@@ -47,22 +47,21 @@ function game(){
         computer: 0,
         player: 0
     };
-
     
     for(i=0; i<5; i++){
         const roundResult = playRound(i);
         if(roundResult.includes("WIN")){
             score.player++;
-            alert(`${roundResult} \nScore\nPlayer: ${score.player} \nComputer: ${score.computer}`);
+            alert(`${roundResult} \nSCORE\nPlayer: ${score.player} \nComputer: ${score.computer}`);
         } else if (roundResult.includes("LOSE")){
             score.computer++;
-            alert(`${roundResult} \nScore\nPlayer: ${score.player} \nComputer: ${score.computer}`);
+            alert(`${roundResult} \nSCORE\nPlayer: ${score.player} \nComputer: ${score.computer}`);
         } else {
-            alert(`${roundResult} \nScore\nPlayer: ${score.player} \nComputer: ${score.computer}`);
+            alert(`${roundResult} \nSCORE\nPlayer: ${score.player} \nComputer: ${score.computer}`);
         }
     }
     
-    let finalResult = ` \nFinal Score: \nPLAYER: ${score.player} \nCOMPUTER: ${score.computer} `;
+    let finalResult = ` \nFINAL SCORE: \nPLAYER: ${score.player} \nCOMPUTER: ${score.computer} \n\nLet´s go for a Rematch!!!`;
 
     if(score.computer > score.player){
         alert(`YOU LOSE!, better luck next time! ${finalResult}`);
