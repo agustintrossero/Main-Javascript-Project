@@ -17,8 +17,8 @@ const playRound = function(playerSelection, computerSelection){
     playerSelection = prompt(`Rock, Paper, Scissors, shoot!`);
     computerSelection = computerPlay();
     if(playerSelection === null){
-       confirm("You hit cancel, are you shure you want to exit the game?") ?  (alert("Good Bye!!! \n(Press F5 to start game)")) : playRound();
-    }
+       !confirm("You hit cancel, are you shure you want to restart the game?") ?  (alert("Good Bye!!! \n(Press F5 to start game)")) : startRestart();
+  }
     switch(playerSelection.toLowerCase() + computerSelection){
         case 'scissorspaper':
         case 'paperrock':
