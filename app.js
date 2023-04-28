@@ -14,10 +14,12 @@ function computerPlay(){
 };
 
 const playRound = function(playerSelection, computerSelection){
+
     playerSelection = prompt(`Rock, Paper, Scissors, shoot!`);
     computerSelection = computerPlay();
+
     if(playerSelection === null){
-       !confirm("You hit cancel, are you shure you want to restart the game?") ?  (alert("Good Bye!!! \n(Press F5 to start game)")) : startRestart();
+       new Error(alert("Good Bye, see you next time!!! \n(Press F5 to start game)"))
   }
     switch(playerSelection.toLowerCase() + computerSelection){
         case 'scissorspaper':
@@ -31,7 +33,7 @@ const playRound = function(playerSelection, computerSelection){
         case 'scissorsscissors':
         case 'paperpaper': 
         case 'rockrock':
-            return roundResult = `IT'S A DRAW!! ${playerSelection} = ${computerSelection}\n`;
+            return roundResult = `IT'S A TIE!! ${playerSelection} = ${computerSelection}\n`;
         default:
             return roundResult = alert("Your choice is invalid!, the only possible choices are: Rock, Paper or Scissors"), playRound();
     };
@@ -45,31 +47,34 @@ startRestart();
 function game(){
     score = {
         computer: 0,
-        player: 0
+        player: 0,
+        tie: 0
     };
     
     for(i=0; i<5; i++){
         const roundResult = playRound(i);
         if(roundResult.includes("WIN")){
             score.player++;
-            alert(`${roundResult} \nSCORE\nPlayer: ${score.player} \nComputer: ${score.computer}`);
+            alert(`Round: ${i+1} \n${roundResult} \nSCORE\nPlayer: ${score.player} \nComputer: ${score.computer} \nTie: ${score.tie}`);
         } else if (roundResult.includes("LOSE")){
             score.computer++;
-            alert(`${roundResult} \nSCORE\nPlayer: ${score.player} \nComputer: ${score.computer}`);
+            alert(`Round: ${i+1} \n${roundResult} \nSCORE\nPlayer: ${score.player} \nComputer: ${score.computer} \nTie: ${score.tie}`);
         } else {
-            alert(`${roundResult} \nSCORE\nPlayer: ${score.player} \nComputer: ${score.computer}`);
+            score.tie++;
+            alert(`Round: ${i+1} \n${roundResult} \nSCORE\nPlayer: ${score.player} \nComputer: ${score.computer} \nTie: ${score.tie}`);
         }
     }
     
-    let finalResult = ` \nFINAL SCORE: \nPLAYER: ${score.player} \nCOMPUTER: ${score.computer} \n\nLet´s go for a Rematch!!!`;
+    let finalResult = ` \n\nFINAL SCORE: \nPLAYER: ${score.player} \nCOMPUTER: ${score.computer} \nTIES: ${score.tie} \n\nLet´s go for a Rematch!!!`;
 
     if(score.computer > score.player){
         alert(`YOU LOSE!, better luck next time! ${finalResult}`);
     } else if (score.player > score.computer){
         alert(`CONGRATULATIONS! YOU ARE THE WINNER!!! ${finalResult}`);
     } else if (score.computer == score.player){
-        alert(`IT'S A DRAW! ${finalResult}`);
+        alert(`IT'S A TIE! ${finalResult}`);
     }
     startRestart();
 }
+
 
