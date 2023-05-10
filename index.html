@@ -8,6 +8,38 @@
     <title>'Rock', 'Paper', or 'Scissors'</title>
 </head>
 <body>
+    <div class="container">
+      <h1>Rock Paper Scissors</h1>
+      <div class="round-description">
+        <p id="round-count">Round: </p>
+        <p id="round-description"></p>
+      </div>
+      <div class="scoreboard">
+        <div class="player-score">
+          <p>Player</p>
+          <p id="player-score">0</p>
+        </div>
+        <div class="tie-score">
+          <p>Tied</p>
+          <p id="tie-score">0</p>
+        </div>
+        <div class="computer-score">
+          <p>Computer</p>
+          <p id="computer-score">0</p>
+        </div>
+      </div>
+      <div class="game">
+        <div class="choices">
+          <button class="rock" value="rock">Rock</button>
+          <button class="paper" value="paper">Paper</button>
+          <button class="scissors" value="scissors">Scissors</button>
+        </div>
+        <div class="results">
+          <p id="result"></p>
+          <button id="reset">Play Again</button>
+        </div>
+      </div>
+    </div>
     <script src="./app.js" defer></script>
 </body>
 </html>
