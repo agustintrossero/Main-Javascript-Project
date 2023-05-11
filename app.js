@@ -1,10 +1,13 @@
 
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.gameButton');
 const playerScore = document.getElementById('player-score');
 const tieScore = document.getElementById('tie-score');
 const computerScore = document.getElementById('computer-score');
 const roundDescription = document.getElementById('round-description');
 const roundCount = document.getElementById('round-count');
+const results = document.querySelector('.results');
+const winner = document.getElementById('result');
+const resetButton = document.querySelector('.reset');
 
 score = {
     computer: 0,
@@ -62,9 +65,10 @@ const handleButtonClick = (e) => {
     const computerSelection = computerPlay();
     let roundResult = playRound(playerSelection, computerSelection);
     round++;
-    roundCount.textContent = round
+    roundCount.textContent = `Round: ${round}`;
     roundDescription.textContent = roundResult
     if (round === 5) {
+        
         endGame();
         return;
       }
@@ -81,9 +85,47 @@ const endGame = () => {
     buttons.forEach(button => {
       button.removeEventListener('click', handleButtonClick);
       button.disabled = true;
+      updateScoreboard();
     });
-    updateScoreboard();
+    finalScore()
+    results.classList.toggle('results-show')
   };
 
-  game()
+  const finalScore = () => {
+    winner.textContent = score.player > score.computer ? 'You Win !!!' : score.player < score.computer ? 'You Lose !!!' : "It's a Draw !!!";
+  }
 
+const startRestart = () => {
+  !confirm("Welcome! You are about to play Rock, Paper, Scissors. \nThe game will be the best five rounds! \nGood Luck!") ? endGame() : game();
+}
+
+startRestart();
+
+
+const resetGame = () => {
+  score.computer = 0;
+  score.player = 0;
+  score.tie = 0;
+  round = 0;
+  roundCount.textContent = 'Round: 0';
+  roundDescription.textContent = '';
+  winner.textContent = '';
+  updateScoreboard();
+  results.classList.remove('results-show');
+  buttons.forEach(button => {
+    button.disabled = false;
+  });
+  game()
+};
+
+resetButton.addEventListener('click', resetGame);
+
+/*   const playVideoBtn = document.getElementById('play-video-btn');
+  const videoElement = document.getElementById('video-element');
+  videoElement.style.display = 'none';
+  
+  playVideoBtn.addEventListener('click', function() {
+    videoElement.style.display = 'block';
+    videoElement.play();
+  });
+   */

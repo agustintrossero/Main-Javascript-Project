@@ -84,6 +84,11 @@
     display: none;
     margin-top: 20px;
   }
+
+  .results-show {
+    display: block;
+    margin-top: 20px;
+  }
   
   #result {
     font-size: 30px;
@@ -91,7 +96,12 @@
     margin-bottom: 20px;
   }
   
-  #reset {
+  .reset {
     font-size: 20px;
     padding: 10px 20px;
   }
+/* 
+  .video-active {
+    display: block; 
+  }
+   */
